@@ -14,3 +14,14 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+#logging:
+#  level:
+#    root: info
+#    org.springframework: debug
+#    '[cybersoft.javabackend.java11.ecommerce]': DEBUG
+#  pattern:
+#    dateformat: yyyy-MM-dd HH:mm:ss
+#ecommerce:
+#  app:
+#    jwt-secret: cybersoftecommerceapplication
+#    jwt-duration: 86400000
