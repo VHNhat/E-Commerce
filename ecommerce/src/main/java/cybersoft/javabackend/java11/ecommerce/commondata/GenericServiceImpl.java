@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.java11.ecommerce.commondata.model.AbstractEntity;
 
-@Service
+
 public class GenericServiceImpl<T extends AbstractEntity, ID> implements GenericService<T, ID> {
 	@Autowired
 	private JpaRepository<T, ID> repository;

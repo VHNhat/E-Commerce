@@ -35,7 +35,7 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> impl
 		if(!repository.findById(id).isPresent())
 			return null;
 		
-		Customer updatedCustomer = new Customer();
+		Customer updatedCustomer = repository.getOne(id);
 		String currentUsername = repository.getOne(id).getUsername();
 		repository.deleteById(id);
 		updatedCustomer.setId(id);
