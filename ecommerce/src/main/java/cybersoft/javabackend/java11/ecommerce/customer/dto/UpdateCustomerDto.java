@@ -13,18 +13,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateCustomerDto {
-
-	@JsonIgnore
-	private String username;
-	
+public class UpdateCustomerDto {	
 	private String currentPassword;
 	
 	private String newPassword;
 	
 	private String email;
-	
-	private String fullName;
 	
 	private String displayName;
 	

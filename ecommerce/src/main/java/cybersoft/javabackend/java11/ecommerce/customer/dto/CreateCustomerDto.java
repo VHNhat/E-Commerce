@@ -10,23 +10,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateCustomerDto {
-	@NotBlank(message = "{customer.username.not-blank}")
-	@Size(min = 3, max = 50, message = "{customer.username.size}")
-	@Column(unique = true, name = "username")
-	private String username;
-	
+public class CreateCustomerDto {	
 	@NotBlank(message = "{customer.password.not-blank}")
 	@Size(min = 8, max = 100, message = "{customer.password.size}")
 	private String password;
 	
-	@NotBlank
+	@NotBlank(message = "{customer.email.not-blank}")
 	@Email
 	@Column(unique = true)
 	private String email;
-	
-	@NotBlank
-	private String fullName;
 	
 	@NotBlank
 	private String displayName;

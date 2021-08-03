@@ -17,10 +17,13 @@ public class CreateProductDto {
 	private String name;
 	@NotBlank
 	private String description;
-	@NotBlank
+	
+	@NotNull
+	private Long price;
+	
 	private int unitsInStock;
-	@NotBlank
+	
 	private String sku;
 	@NotNull
-	private ProductType productType;
+	private Long productTypeId;
 }

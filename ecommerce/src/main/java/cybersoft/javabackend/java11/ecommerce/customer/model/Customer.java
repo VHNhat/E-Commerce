@@ -16,22 +16,14 @@ import lombok.Setter;
 @Entity
 @Table(name = "ecommerce_customer")
 public class Customer extends AbstractEntity {
-	@NotBlank(message = "{customer.username.not-blank}")
-	@Size(min = 3, max = 50, message = "{customer.username.size}")
-	@Column(unique = true, name = "username")
-	private String username;
-	
 	@NotBlank(message = "{customer.password.not-blank}")
 	@Size(min = 8, max = 100, message = "{customer.password.size}")
 	private String password;
 	
-	@NotBlank
+	@NotBlank(message = "{customer.email.not-blank}")
 	@Email
 	@Column(unique = true)
 	private String email;
-	
-	@NotBlank
-	private String fullname;
 	
 	@NotBlank
 	private String displayName;
@@ -46,11 +38,7 @@ public class Customer extends AbstractEntity {
 	
 	private String avatar;
 	private String facebookUrl;
-	
-	public Customer username(String username) {
-		this.username = username;
-		return this;
-	}
+
 	public Customer password(String password) {
 		this.password = password;
 		return this;
@@ -59,10 +47,7 @@ public class Customer extends AbstractEntity {
 		this.email = email;
 		return this;
 	}
-	public Customer fullname(String fullname) {
-		this.fullname = fullname;
-		return this;
-	}
+
 	public Customer displayName(String displayName) {
 		this.displayName = displayName;
 		return this;

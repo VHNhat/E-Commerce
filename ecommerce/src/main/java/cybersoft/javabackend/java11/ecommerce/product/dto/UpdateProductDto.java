@@ -15,10 +15,12 @@ public class UpdateProductDto {
 	private String name;
 
 	private String description;
+	
+	private long price;
 
 	private int unitsInStock;
 
 	private String sku;
 
-	private ProductType productType;
+	private Long productTypeId;
 }

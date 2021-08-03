@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,14 +30,14 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 	
-	@GetMapping("")
-	public ResponseEntity<Object> findAllProducts(){
-		List<Product> products = service.findAll();
-		
-		if(products.isEmpty())
-			return ResponseHandler.getResponse("there is no data", HttpStatus.OK);
-		return ResponseHandler.getResponse(products, HttpStatus.OK);
-	}
+//	@GetMapping("")
+//	public ResponseEntity<Object> findAllProducts(){
+//		List<Product> products = service.findAll();
+//		
+//		if(products.isEmpty())
+//			return ResponseHandler.getResponse("there is no data", HttpStatus.OK);
+//		return ResponseHandler.getResponse(products, HttpStatus.OK);
+//	}
 	
 	@PostMapping("/add")
 	public ResponseEntity<Object> addProduct(@Valid @RequestBody CreateProductDto dto, BindingResult error){
@@ -59,10 +60,20 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/delete/{product-id}")
-	public ResponseEntity<Object> removeProduct(@PathVariable("prodcut-id") Long id){
+	public ResponseEntity<Object> removeProduct(@PathVariable("product-id") Long id){
 		if(id==null)
 			return ResponseHandler.getResponse("Id is null!", HttpStatus.BAD_REQUEST);
 		service.deleteById(id);
 		return ResponseHandler.getResponse("Product has been deleted!", HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("")
+	public String showProductPage(Model model) {
+		List<Product> products = service.findAll();
+		model.addAttribute("products", products);
+		
+		return "home";
+	}
+	
 }

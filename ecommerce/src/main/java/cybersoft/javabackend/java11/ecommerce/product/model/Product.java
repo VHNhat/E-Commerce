@@ -24,8 +24,11 @@ public class Product extends AbstractEntity {
 	@NotBlank
 	private String description;
 	
+	@NotNull
+	private long price;
+	
 	private String imageUrl;
-	@NotBlank
+	
 	private int unitsInStock;
 	@NotBlank
 	private String sku;
@@ -40,6 +43,10 @@ public class Product extends AbstractEntity {
 	}
 	public Product description(String description) {
 		this.description = description;
+		return this;
+	}
+	public Product description(long price) {
+		this.price = price;
 		return this;
 	}
 	public Product sku(String sku) {
