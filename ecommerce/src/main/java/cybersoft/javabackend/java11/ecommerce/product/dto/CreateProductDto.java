@@ -19,7 +19,7 @@ public class CreateProductDto {
 	private String description;
 	
 	@NotNull
-	private Long price;
+	private int price;
 	
 	private int unitsInStock;
 	

@@ -16,7 +16,7 @@ public class UpdateProductDto {
 
 	private String description;
 	
-	private long price;
+	private int price;
 
 	private int unitsInStock;
 

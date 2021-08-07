@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.java11.ecommerce.commondata.model.ResponseHandler;
 import cybersoft.javabackend.java11.ecommerce.product.dto.CreateProductDto;
@@ -24,20 +26,20 @@ import cybersoft.javabackend.java11.ecommerce.product.dto.UpdateProductDto;
 import cybersoft.javabackend.java11.ecommerce.product.model.Product;
 import cybersoft.javabackend.java11.ecommerce.product.service.ProductService;
 
-@RestController
-@RequestMapping("/products")
+@Controller
+//@RequestMapping("/products")
 public class ProductController {
 	@Autowired
 	ProductService service;
 	
-//	@GetMapping("")
-//	public ResponseEntity<Object> findAllProducts(){
-//		List<Product> products = service.findAll();
-//		
-//		if(products.isEmpty())
-//			return ResponseHandler.getResponse("there is no data", HttpStatus.OK);
-//		return ResponseHandler.getResponse(products, HttpStatus.OK);
-//	}
+	@GetMapping("")
+	public ResponseEntity<Object> findAllProducts(){
+		List<Product> products = service.findAll();
+		
+		if(products.isEmpty())
+			return ResponseHandler.getResponse("there is no data", HttpStatus.OK);
+		return ResponseHandler.getResponse(products, HttpStatus.OK);
+	}
 	
 	@PostMapping("/add")
 	public ResponseEntity<Object> addProduct(@Valid @RequestBody CreateProductDto dto, BindingResult error){
@@ -68,7 +70,8 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("")
+//	@GetMapping("")
+	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String showProductPage(Model model) {
 		List<Product> products = service.findAll();
 		model.addAttribute("products", products);

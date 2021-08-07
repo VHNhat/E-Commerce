@@ -27,6 +27,7 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 		Product product = new Product();
 		
 		product = mapper.map(dto, product);
+		product.price(dto.getPrice());
 		
 		ProductType type = productTypeRepo.getOne(dto.getProductTypeId());
 		product.setProductType(type);

@@ -14,11 +14,7 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
-  thymeleaf:
-    cache: false
-    enabled: true
-    prefix: classpath:/templates/
-    suffix: .html
+
 #logging:
 #  level:
 #    root: info

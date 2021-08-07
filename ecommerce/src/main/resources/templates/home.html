@@ -14,9 +14,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" media="all">
 
 	<!-- Main CSS-->
-	<link href="styles.css" rel="stylesheet" media="all">
+	<link th:href="@{/css/styles.css}" rel="stylesheet" media="all">
 
-	<link rel="icon" href="../static/assets/images/products/Me-logo.png">
+	<link rel="icon" th:href="@{/assets/images/products/Me-logo.png}">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 		<aside class="menu-sidebar d-none d-lg-block">
 			<div class="logo">
 				<a href="home.html">
-					<img src="../static/assets/images/products/Me-logo.png" style=" width: 70px;" alt="" class="img-responsive">
+					<img th:src="@{/assets/images/products/Me-logo.png}" style=" width: 70px;" alt="" class="img-responsive">
 				</a>
 			</div>
 			<div class="menu-sidebar-content js-scrollbar1">
@@ -82,18 +82,17 @@
 				<div class="section-content section-content-p30">
 					<div class="container-fluid">
 						<div class="row">
-							
-							<div class="col-md-3" th:each = "product : ${products}">
-								<div class="product-box">
-									<a href="product-detail.html">
-										<img src="../static/assets/images/products/placeholder.png" class="img-responsive">
-									</a>
-									<a href="product-detail.html">
-										<h1 th:utext="${product.name}">...</h1>
-									</a>
-									<h2 th:utext="${produc.description}">...</h2>
-									<div class="price" th:utext="${product.price}">...</div>
-									<a href="#" class="primary-btn">Add to cart</a>
+					
+								<div class="col-md-3" th:each="product : ${products}">
+									<div class="product-box">
+										<a href="product-detail.html">
+											<img th:src="@{/assets/images/products/1.jpg}" class="img-responsive">
+										</a>
+										<a href="product-detail.html"></a>
+										<h1 th:text="${product.name}">name</h1>
+										<div class="price" th:text="${product.price} + '$'">price</div>
+										<a href="#" class="primary-btn">Add to cart</a>
+									
 								</div>
 							</div>
 							
