@@ -1,5 +1,7 @@
 package cybersoft.javabackend.java11.ecommerce.product.service;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
@@ -27,7 +29,8 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 		Product product = new Product();
 		
 		product = mapper.map(dto, product);
-		product.price(dto.getPrice());
+		product.price(dto.getPrice())
+				.unitsInStock(dto.getUnitsInStock());
 		
 		ProductType type = productTypeRepo.getOne(dto.getProductTypeId());
 		product.setProductType(type);
@@ -38,11 +41,19 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 	public Product update(@Valid UpdateProductDto dto, Long id) {
 		Product product = repo.getOne(id);
 		product = mapper.map(dto, product);
+		product.price(dto.getPrice())
+				.unitsInStock(dto.getUnitsInStock());
 		
 		ProductType type = productTypeRepo.getOne(dto.getProductTypeId());
 		product.setProductType(type);
 		
 		return repo.save(product);
+	}
+	
+	@Override
+	public List<Product> findByNameContaining(String name) {
+		List<Product> products = repo.findByNameContaining(name);
+	    return products;
 	}
 
 }

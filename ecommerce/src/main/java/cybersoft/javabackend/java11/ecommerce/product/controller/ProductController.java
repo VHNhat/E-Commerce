@@ -2,6 +2,7 @@ package cybersoft.javabackend.java11.ecommerce.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cybersoft.javabackend.java11.ecommerce.commondata.model.ResponseHandler;
 import cybersoft.javabackend.java11.ecommerce.product.dto.CreateProductDto;
@@ -72,11 +74,21 @@ public class ProductController {
 	
 //	@GetMapping("")
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public String showProductPage(Model model) {
+	public String homePage(Model model) {
 		List<Product> products = service.findAll();
 		model.addAttribute("products", products);
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/product/?search={search}", method = RequestMethod.POST)
+	public String searchBar(HttpServletRequest req,Model model, @RequestParam(value = "search", required = false) String value) {
+		String search = req.getParameter("search");
+		value = search;
+		List<Product> products = service.findByNameContaining(search);
+		model.addAttribute("products", products);
+			
+		return "redirect:/home";
 	}
 	
 }

@@ -27,7 +27,8 @@ public class Product extends AbstractEntity {
 	@NotNull
 	private int price;
 	
-	private String imageUrl;
+	@NotBlank
+	private String image;
 	
 	private int unitsInStock;
 	@NotBlank

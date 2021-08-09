@@ -25,7 +25,7 @@
 		<!-- MENU SIDEBAR-->
 		<aside class="menu-sidebar d-none d-lg-block">
 			<div class="logo">
-				<a href="product">
+				<a href="home.html">
 					<img th:src="@{/assets/images/products/Me-logo.png}" style=" width: 70px;" alt="" class="img-responsive">
 				</a>
 			</div>
@@ -33,10 +33,10 @@
 				<nav class="navbar-sidebar">
 					<ul class="list-unstyled navbar-list">
 						<li>
-							<a href="product/book">Books</a>
+							<a href="book.html">Books</a>
 						</li>
 						<li>
-							<a href="product/coffee">Coffee Mugs</a>
+							<a href="coffee.html">Coffee Mugs</a>
 						</li>
 						<li>
 							<a href="#">Mouse Pads</a>
@@ -58,14 +58,14 @@
 					<div class="container-fluid">
 						<div class="header-wrap">
 							<form class="form-header" onsubmit="return false;" method="GET">
-								<input class="au-input au-input-xl" type="text" name="search" id="search"
+								<input class="au-input au-input-xl" type="text" name="search"
 									placeholder="Search for data ..." />
 								<button class="au-btn-submit" type="submit">
 									Search
 								</button>
 							</form>
 							<div class="cart-area d-n">
-								<a href="checkout">
+								<a href="shopping-detail.html">
 									<div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart"
 										aria-hidden="true"></i>
 								</a>
@@ -85,7 +85,7 @@
 					
 								<div class="col-md-3" th:each="product : ${products}">
 									<div class="product-box">
-										<a th:href="@{'/product/' + ${product.id}}">
+										<a href="product-detail.html">
 											<img th:src="@{'/assets/images/products/' + ${product.image}}" class="img-responsive">
 										</a>
 										<a href="product-detail.html"></a>

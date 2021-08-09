@@ -18,9 +18,13 @@ public class CreateProductDto {
 	@NotBlank
 	private String description;
 	
+	@NotBlank
+	private String image;
+	
 	@NotNull
 	private int price;
 	
+	@NotNull
 	private int unitsInStock;
 	
 	private String sku;
